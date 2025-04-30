@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Show Candidate Registrations</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<button class="btn btn-light btn-sm" style="margin-left:1400px;"><a href = "{% url 'update_result_view_url' %}">Reset</a></button>
+<h2><br>List Of Candidate</h2>
+<br>
+<table class="table table-striped ">
+    <thead>
+    <tr>
+        <th>Full Name</th>
+        <th>Party Name</th>
+        <th>Party Logo</th>
+        <th>Vote</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+    <tr>
+        <td>{{i.fullname}}</td>
+        <td>{{i.partynm}}</td>
+        <td>{% if i.partyimg %}
+                <img src="{{ i.partyimg.url }}" alt="{{ i.partynm }} Logo" style="max-width: 50px; max-height: 50px;">
+            {% else %}
+                No Image Available
+            {% endif %}</td>
+        <td>{{i.vote}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

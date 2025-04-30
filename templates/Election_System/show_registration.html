@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Show Registrations</title>
+{% endblock %}
+
+{% block content %}
+<h2><br>List Of Voters</h2>
+<br>
+<table class="table table-striped ">
+    <thead>
+    <tr>
+        <th>Full Name</th>
+        <th>Date Of Birth</th>
+        <th>Gender</th>
+        <th>City</th>
+        <th>Taluka</th>
+        <th>Dist</th>
+        <th>State</th>
+        <th>Pin Code</th>
+        <th>Addhar No</th>
+        <th>Voter Id</th>
+        <th>Mobile No</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+    <tr>
+        <td>{{i.fullname}}</td>
+        <td>{{i.dob}}</td>
+        <td>{{i.sex}}</td>
+        <td>{{i.city}}</td>
+        <td>{{i.taluka}}</td>
+        <td>{{i.dist}}</td>
+        <td>{{i.state}}</td>
+        <td>{{i.pincode}}</td>
+        <td>{{i.addharno}}</td>
+        <td>{{i.voterid}}</td>
+        <td>{{i.mobno}}</td>
+        <td>{{i.email}}</td>
+        <td>
+            <button class="btn btn-success btn-sm"><a href = "{% url 'update_view_url' i.fullname %}">Update</a></button>
+            <button class="btn btn-danger btn-sm"><a href = "{% url 'delete_view_url' i.fullname %}">Delete</a></button>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
